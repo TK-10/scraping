@@ -1,47 +1,47 @@
-//•Ï”
+//å¤‰æ•°
 var new_date;
 var new_title;
 
-// ¡Scrapingˆ—
+// â– Scrapingå‡¦ç†
 function scraping() {
   
   const url = 'URL';
-  let fromText = '<ul class="index-info-list">'; // æ“¾‚·‚éƒ^ƒO‚ÌŠJnw’è
-  let toText = '</ul>'; // æ“¾‚·‚éƒ^ƒO‚ÌI—¹w’è
+  let fromText = '<ul class="index-info-list">'; // å–å¾—ã™ã‚‹ã‚¿ã‚°ã®é–‹å§‹æŒ‡å®š
+  let toText = '</ul>'; // å–å¾—ã™ã‚‹ã‚¿ã‚°ã®çµ‚äº†æŒ‡å®š
 
-  // ƒXƒNƒŒƒCƒsƒ“ƒO
+  // ã‚¹ã‚¯ãƒ¬ã‚¤ãƒ”ãƒ³ã‚°
   var html = UrlFetchApp.fetch(url).getContentText();
   
-  // ƒp[ƒX+•K—v‚È“ú‚Ì‚İØ‚èæ‚è
+  // ãƒ‘ãƒ¼ã‚¹+å¿…è¦ãªæ—¥æ™‚ã®ã¿åˆ‡ã‚Šå–ã‚Š
   var date = Parser.data(html).from('<span class="date">').to('</span>').iterate();
-  //ÅV‚Ì‚¨’m‚ç‚¹‹L–‚Ì“ú‚ğ•Ï”‚É“ü‚ê‚é
+  //æœ€æ–°ã®ãŠçŸ¥ã‚‰ã›è¨˜äº‹ã®æ—¥æ™‚ã‚’å¤‰æ•°ã«å…¥ã‚Œã‚‹
   var new_date = date[0];
   
-  // ƒp[ƒX+•K—v‚Èƒ^ƒCƒgƒ‹‚Ì‚İØ‚èæ‚è”z—ñ‚É“ü‚ê‚é
+  // ãƒ‘ãƒ¼ã‚¹+å¿…è¦ãªã‚¿ã‚¤ãƒˆãƒ«ã®ã¿åˆ‡ã‚Šå–ã‚Šé…åˆ—ã«å…¥ã‚Œã‚‹
   var title = Parser.data(html).from('<span class="title">').to('</span>').iterate();
-  //ÅV‚Ì‚¨’m‚ç‚¹‹L–‚Ìƒ^ƒCƒgƒ‹‚ğ•Ï”‚É“ü‚ê‚é
+  //æœ€æ–°ã®ãŠçŸ¥ã‚‰ã›è¨˜äº‹ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚’å¤‰æ•°ã«å…¥ã‚Œã‚‹
   var new_title = title[0];
 
-  //2021”N7Œ31“ú“_‚ÌÅV‚ª06.30i…j‚È‚Ì‚Å‚»‚êˆÈŠO(ÅV‚©)‰ğÍ
-  //VŒ^ƒRƒƒi‚Ì•¶Œ¾‚ªŠÜ‚Ü‚ê‚Ä‚¢‚ÄA‹L–‚Ì“ú”‚ªÅV‚¾‚Á‚½ê‡
-  if(new_date@!= '06.30i…j' && new_title.indexOf('VŒ^ƒRƒƒi') !== -1){
+  //2021å¹´7æœˆ31æ—¥æ™‚ç‚¹ã®æœ€æ–°ãŒ06.30ï¼ˆæ°´ï¼‰ãªã®ã§ãã‚Œä»¥å¤–(æœ€æ–°ã‹)è§£æ
+  //æ–°å‹ã‚³ãƒ­ãƒŠã®æ–‡è¨€ãŒå«ã¾ã‚Œã¦ã„ã¦ã€è¨˜äº‹ã®æ—¥æ•°ãŒæœ€æ–°ã ã£ãŸå ´åˆ
+  if(new_dateã€€!= '06.30ï¼ˆæ°´ï¼‰' && new_title.indexOf('æ–°å‹ã‚³ãƒ­ãƒŠ') !== -1){
   
-    //ƒ[ƒ‹‚É‘—M‚·‚é
+    //ãƒ¡ãƒ¼ãƒ«ã«é€ä¿¡ã™ã‚‹
     mailSend(new_date,new_title);
 
   }
 }
 
-//ƒ[ƒ‹‘—M
+//ãƒ¡ãƒ¼ãƒ«é€ä¿¡
 function mailSend(new_date,new_title) {
 
-  const recipient = ['‘—MƒAƒhƒŒƒX1','‘—MƒAƒhƒŒƒX2']; //‘—Mæ‚Ìƒ[ƒ‹ƒAƒhƒŒƒX
-  const subject = 'y››ƒNƒŠƒjƒbƒNz‚ÌVŒ^ƒRƒƒiƒƒNƒ`ƒ“‚ÉŠÖ‚·‚éV‚µ‚¢î•ñ‚ªXV‚³‚ê‚Ü‚µ‚½';
+  const recipient = ['é€ä¿¡ã‚¢ãƒ‰ãƒ¬ã‚¹1','é€ä¿¡ã‚¢ãƒ‰ãƒ¬ã‚¹2']; //é€ä¿¡å…ˆã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹
+  const subject = 'ã€â—‹â—‹ã‚¯ãƒªãƒ‹ãƒƒã‚¯ã€‘ã®æ–°å‹ã‚³ãƒ­ãƒŠãƒ¯ã‚¯ãƒãƒ³ã«é–¢ã™ã‚‹æ–°ã—ã„æƒ…å ±ãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸ';
 
-  const body = 'y‚¨’m‚ç‚¹“à—ez\n' + new_title + '\n\n‰º‹LURL‚ğƒNƒŠƒbƒN‚µ‚ÄÚ×‚ğ‚²Šm”F‚­‚¾‚³‚¢\n'+'URL';
+  const body = 'ã€ãŠçŸ¥ã‚‰ã›å†…å®¹ã€‘\n' + new_title + '\n\nä¸‹è¨˜URLã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦è©³ç´°ã‚’ã”ç¢ºèªãã ã•ã„\n'+'URL';
 
 
-	//‘—M
+    //é€ä¿¡
     GmailApp.sendEmail(recipient.join(","), subject, body);
     
 }
