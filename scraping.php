@@ -1,25 +1,25 @@
 <?php
-        // phpQuery‚Ì“Ç‚İ‚İ
+        // phpQueryã®èª­ã¿è¾¼ã¿
         require_once("./phpQuery/phpQuery-onefile.php");
         
-        //URL‚©‚çƒf[ƒ^‚ğæ“¾‚·‚éê‡
+        //URLã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
         $html = file_get_contents("URL");
-        //DOM•ªÍ
+        //DOMåˆ†æ
         $doc = phpQuery::newDocument($html);
 
-        // ƒNƒ‰ƒX–¼‚ğw’è‚µ‚¨’m‚ç‚¹ˆê——‚©‚çÅV‹L–‚ğæ“¾
+        // ã‚¯ãƒ©ã‚¹åã‚’æŒ‡å®šã—ãŠçŸ¥ã‚‰ã›ä¸€è¦§ã‹ã‚‰æœ€æ–°è¨˜äº‹ã‚’å–å¾—
         $newTitleList = $doc->find(".index-info li:eq(0)");
         
-        //ÅV‹L–‚Ì“ú•t‚ğæ“¾
+        //æœ€æ–°è¨˜äº‹ã®æ—¥ä»˜ã‚’å–å¾—
         $newTitleDate = $doc[".date:eq(0)"]->text();
         
-        //Œ»İ‚ÌÅV‹L–‚ª06.30i…j‚È‚Ì‚ÅA06.30i…jˆÈŠO‚Ì“ú•t=ÅV‹L–‚ÅƒRƒƒiŠÖ˜A‚Ì‹L–‚ª“Še‚³‚ê‚½‚ç’Ê’m
-        if(strpos($newTitleDate, "06.30i…j") === false && strpos($newTitleList, "ƒRƒƒi") !== false){
+        //2021å¹´7æœˆ31æ—¥æ™‚ç‚¹ã®æœ€æ–°ãŒ06.30ï¼ˆæ°´ï¼‰ãªã®ã§ãã‚Œä»¥å¤–(æœ€æ–°)ã§ã‚³ãƒ­ãƒŠé–¢é€£ã®è¨˜äº‹ãŒæŠ•ç¨¿ã•ã‚ŒãŸã‚‰é€šçŸ¥
+        if(strpos($newTitleDate, "06.30ï¼ˆæ°´ï¼‰") === false && strpos($newTitleList, "ã‚³ãƒ­ãƒŠ") !== false){
             
-            //ƒ[ƒ‹‘—M
-            $to = "‘—M‚·‚éƒ[ƒ‹ƒAƒhƒŒƒX";
-            $subject = "››ƒNƒŠƒjƒbƒN‚ÅÅV‚ÌƒRƒƒiŠÖ˜A‹L–‚ª“Še‚³‚ê‚Ü‚µ‚½";
-            $message = "‰º‹LURL‚É‚ÄÚ×‚ğ‚²Šm”F‚­‚¾‚³‚¢";
+            //ãƒ¡ãƒ¼ãƒ«é€ä¿¡
+            $to = "é€ä¿¡ã™ã‚‹ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹";
+            $subject = "â—‹â—‹ã‚¯ãƒªãƒ‹ãƒƒã‚¯ã§æœ€æ–°ã®ã‚³ãƒ­ãƒŠé–¢é€£è¨˜äº‹ãŒæŠ•ç¨¿ã•ã‚Œã¾ã—ãŸ";
+            $message = "ä¸‹è¨˜URLã«ã¦è©³ç´°ã‚’ã”ç¢ºèªãã ã•ã„";
             $headers = "From: from@example.com";
             mb_send_mail($to, $subject, $message, $headers); 
             
