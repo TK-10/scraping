@@ -63,7 +63,7 @@ function sheetInsert() {
 function mailSend(new_date,new_title) {
 
   const recipient = ['メールアドレス1','メールアドレス2']; //送信先のメールアドレス
-  const subject = '【上本町リウマチこまちクリニック】の新型コロナワクチンに関する新しい情報が更新されました';
+  const subject = '【〇〇クリニック】の新型コロナワクチンに関する新しい情報が更新されました';
 
   const body = '【お知らせ内容】\n' + new_title + '\n\n下記URLをクリックして詳細をご確認ください\n'+'https://urk-match.jp/';
 
