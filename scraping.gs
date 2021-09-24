@@ -9,7 +9,7 @@ var range;//セル(A2)
 // ■Scraping処理
 function scraping() {
   
-  const url = 'https://urk-match.jp/';
+  const url = 'URL';
   let fromText = '<ul class="index-info-list">'; // 取得するタグの開始指定
   let toText = '</ul>'; // 取得するタグの終了指定
 
