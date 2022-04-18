@@ -1,10 +1,10 @@
 //グローバル変数
-var new_date;//日付
-var new_title;//タイトル
-var value;//送信フラグ
-var spreadsheet;//スプレッドシート
-var sheet;//シート
-var range;//セル(A2)
+let new_date;//日付
+let new_title;//タイトル
+let value;//送信フラグ
+let spreadsheet;//スプレッドシート
+let sheet;//シート
+let range;//セル(A2)
 
 // ■Scraping処理
 function scraping() {
@@ -14,17 +14,17 @@ function scraping() {
   let toText = '</ul>'; // 取得するタグの終了指定
 
   // スクレイピング
-  var html = UrlFetchApp.fetch(url).getContentText();
+  let html = UrlFetchApp.fetch(url).getContentText();
   
   // パース+必要な日時のみ切り取り
-  var date = Parser.data(html).from('<span class="date">').to('</span>').iterate();
+  const date = Parser.data(html).from('<span class="date">').to('</span>').iterate();
   //最新のお知らせ記事の日時を変数に入れる
-  var new_date = date[0];
+  let new_date = date[0];
   
   // パース+必要なタイトルのみ切り取り配列に入れる
-  var title = Parser.data(html).from('<span class="title">').to('</span>').iterate();
+  let title = Parser.data(html).from('<span class="title">').to('</span>').iterate();
   //最新のお知らせ記事のタイトルを変数に入れる
-  var new_title = title[0];
+  let new_title = title[0];
 
   sheetRead();//送信フラグ読み込み
   
